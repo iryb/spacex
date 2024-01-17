@@ -1,17 +1,30 @@
-import React, { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import styled, { css } from "styled-components";
+
+type ButtonVatiant = "primary" | "secondary";
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   href?: string;
+  variant: ButtonVatiant;
 }
 
-const backgroundColor = "#D3EAFF";
-const foregroundColor = "#000";
-const hoverBackgroundColor = "#7BC0FF";
-const hoverForegroundColor = "#000";
+const bg = {
+  primary: () => css`
+    background-color: var(--primary-color);
+    &:hover {
+      background-color: var(--primary-hover-color);
+    }
+  `,
+  secondary: () => css`
+    background-color: var(--secondary-color);
+    &:hover {
+      background-color: var(--secondary-hover-color);
+    }
+  `,
+};
 
-const styles = css`
+const BasicButton = styled.button`
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
@@ -20,40 +33,25 @@ const styles = css`
   text-decoration: none;
   appearance: none;
   padding: 0 1em;
-  border-radius: 0.125em;
+  border: none;
+  font-family: var(--secondary-font);
+  font-size: clamp(16px, 1.5vw, 24px);
+  text-transform: uppercase;
+  font-weight: 600;
   box-sizing: border-box;
   transition: background-color 250ms ease-out, color 250ms ease-out,
     border-color 250ms ease-out;
-  background-color: ${backgroundColor};
-  color: ${foregroundColor};
+  color: #000;
   cursor: pointer;
-
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: ${hoverBackgroundColor};
-    color: ${hoverForegroundColor};
-  }
-
-  &:focus {
-    outline: none;
-  }
 `;
 
-const Anchor = styled.a`
-  ${styles}
-`;
-const StyledButton = styled.button`
-  ${styles}
+const StyledButton = styled(BasicButton)<ButtonProps>`
+  ${({ variant }) => bg[variant]}
 `;
 
-const Button: FC<ButtonProps> = ({ type, children, ...props }) => {
-  const { href } = props;
-  if (href) {
-    return <Anchor {...props}>{children}</Anchor>;
-  }
+const Button: FC<ButtonProps> = ({ type, children, variant, ...props }) => {
   return (
-    <StyledButton {...props} type={type}>
+    <StyledButton variant={variant} type={type} {...props}>
       {children}
     </StyledButton>
   );
