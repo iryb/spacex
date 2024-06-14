@@ -4,7 +4,13 @@ import GlobalStyle from "./globalStyles";
 export default function App() {
   return (
     <main>
-      <Button type="button">Buy</Button>
+      <GlobalStyle />
+      <Button type="button" variant="primary">
+        Buy
+      </Button>
+      <Button type="button" variant="secondary">
+        Like
+      </Button>
     </main>
   );
 }

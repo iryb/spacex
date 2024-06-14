@@ -3,49 +3,55 @@ import styled, { css } from "styled-components";
 
 type ButtonVatiant = "primary" | "secondary";
 
-interface ButtonProps
+export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   href?: string;
   variant: ButtonVatiant;
 }
 
-const bg = {
+export const bg = {
   primary: () => css`
     background-color: var(--primary-color);
+    border-color: var(--primary-color);
     &:hover {
-      background-color: var(--primary-hover-color);
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
     }
   `,
   secondary: () => css`
-    background-color: var(--secondary-color);
+    background-color: transparent;
+    color: var(--primary-color);
     &:hover {
-      background-color: var(--secondary-hover-color);
+      border-color: #fff;
+      color: #fff;
     }
   `,
 };
 
-const BasicButton = styled.button`
+export const BasicButton = styled.button`
   display: inline-flex;
   align-items: center;
-  white-space: nowrap;
-  height: 2.5em;
   justify-content: center;
   text-decoration: none;
   appearance: none;
-  padding: 0 1em;
-  border: none;
+  padding: 1em 1.5em;
+  border: 3px solid var(--primary-color);
+  border-radius: 10px;
+  letter-spacing: 1.5px;
   font-family: var(--secondary-font);
   font-size: clamp(16px, 1.5vw, 24px);
   text-transform: uppercase;
   font-weight: 600;
   box-sizing: border-box;
-  transition: background-color 250ms ease-out, color 250ms ease-out,
+  transition:
+    background-color 250ms ease-out,
+    color 250ms ease-out,
     border-color 250ms ease-out;
-  color: #000;
+  color: var(--secondary-color);
   cursor: pointer;
 `;
 
-const StyledButton = styled(BasicButton)<ButtonProps>`
+export const StyledButton = styled(BasicButton)<ButtonProps>`
   ${({ variant }) => bg[variant]}
 `;
 

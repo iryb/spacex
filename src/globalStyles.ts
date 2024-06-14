@@ -4,12 +4,13 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Syne:wght@400;600;700;800&display=swap');
 
   :root {
-    --primary-color: #D3EAFF;
-    --secondary-color: #ECECEC;
+    --primary-color: #39dbff;
+    --secondary-color: #0E185F;
     --primary-hover-color: #65b6ff;
     --secondary-hover-color: #b2b2b2;
     --primary-font: 'Lato', sans-serif;
     --secondary-font: 'Syne', sans-serif;
+    --background-color: #020a46;
   }
   body {
     margin: 0;
