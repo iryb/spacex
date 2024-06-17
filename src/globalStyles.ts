@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Syne:wght@400;600;700;800&display=swap');
@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: var(--primary-font);
+    background-color: var(--background-color);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--secondary-font);
@@ -23,3 +24,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default GlobalStyle;
+
+export const Wrapper = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  padding: 0 clamp(15px, 3vw, 40px);
+`;

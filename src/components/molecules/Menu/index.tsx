@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { type Link as LinkType, Link } from "../../atoms/Link";
 
 interface MenuProps {
-  type: "horizontal" | "vertical";
+  type?: "horizontal" | "vertical";
   links: LinkType[];
 }
 

@@ -1,16 +1,12 @@
-import Button from "./components/atoms/Button";
+import { Banner } from "./components/organisms/Banner";
+import { Header } from "./components/organisms/Header";
 import GlobalStyle from "./globalStyles";
 
 export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <Button type="button" variant="primary">
-        Buy
-      </Button>
-      <Button type="button" variant="secondary">
-        Like
-      </Button>
+      <Header />
     </main>
   );
 }

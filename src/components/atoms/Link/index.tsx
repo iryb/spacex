@@ -12,7 +12,7 @@ export interface LinkProps extends ButtonHTMLAttributes<HTMLAnchorElement> {
   isActive?: boolean;
 }
 
-const BasicLink = styled.a<LinkProps>`
+const BasicLink = styled.a<{ $isActive?: boolean }>`
   display: inline-block;
   position: relative;
   text-decoration: none;
@@ -39,8 +39,8 @@ const BasicLink = styled.a<LinkProps>`
       right: 0;
     }
   }
-  ${({ isActive }) =>
-    isActive &&
+  ${({ $isActive }) =>
+    $isActive &&
     css`
       &:before {
         right: 0;
@@ -55,7 +55,7 @@ export const Link: FC<LinkProps> = ({
   ...props
 }) => {
   return (
-    <BasicLink {...props} href={href} isActive={isActive}>
+    <BasicLink {...props} href={href} $isActive={isActive}>
       {children}
     </BasicLink>
   );
