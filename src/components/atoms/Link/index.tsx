@@ -1,9 +1,15 @@
 import React, { ButtonHTMLAttributes, FC } from "react";
 import styled, { css } from "styled-components";
 
+export type Link = {
+  href: string;
+  title: string;
+  isActive?: boolean;
+};
+
 export interface LinkProps extends ButtonHTMLAttributes<HTMLAnchorElement> {
   href: string;
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 const BasicLink = styled.a<LinkProps>`
@@ -11,7 +17,6 @@ const BasicLink = styled.a<LinkProps>`
   position: relative;
   text-decoration: none;
   font-family: var(--secondary-font);
-  font-size: clamp(16px, 1.5vw, 24px);
   text-transform: uppercase;
   font-weight: 600;
   transition: all 250ms ease-out;
@@ -43,7 +48,12 @@ const BasicLink = styled.a<LinkProps>`
     `}
 `;
 
-export const Link: FC<LinkProps> = ({ href, isActive, children, ...props }) => {
+export const Link: FC<LinkProps> = ({
+  href,
+  isActive = false,
+  children,
+  ...props
+}) => {
   return (
     <BasicLink {...props} href={href} isActive={isActive}>
       {children}
