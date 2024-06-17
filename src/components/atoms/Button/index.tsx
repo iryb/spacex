@@ -39,7 +39,7 @@ export const BasicButton = styled.button`
   border-radius: 10px;
   letter-spacing: 1.5px;
   font-family: var(--secondary-font);
-  font-size: clamp(16px, 1.5vw, 24px);
+  font-size: clamp(16px, 1.2vw, 18px);
   text-transform: uppercase;
   font-weight: 600;
   box-sizing: border-box;
