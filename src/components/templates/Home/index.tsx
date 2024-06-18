@@ -4,7 +4,7 @@ import { Banner } from "../../organisms/Banner";
 export const Home = () => {
   return (
     <>
-      <Banner />
+      <Banner title="Plan your space trip" image="/assets/banner.jpg" />
     </>
   );
 };
