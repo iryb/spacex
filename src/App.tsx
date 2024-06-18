@@ -1,12 +1,17 @@
-import { Banner } from "./components/organisms/Banner";
-import { Header } from "./components/organisms/Header";
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./components/templates/Home";
 import GlobalStyle from "./globalStyles";
+import { Layout } from "./components/Layout";
 
 export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <Header />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
     </main>
   );
 }
