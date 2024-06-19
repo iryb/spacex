@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./components/templates/Home";
 import GlobalStyle from "./globalStyles";
 import { Layout } from "./components/Layout";
+import { Home } from "./components/pages/Home";
 
 export default function App() {
   return (
