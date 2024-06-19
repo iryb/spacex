@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import { ButtonGroup } from "../../molecules/ButtonGroup";
 import Button from "../../atoms/Button";
 import IconButton from "../../atoms/IconButton";
 
@@ -28,9 +26,9 @@ const StyledCard = styled.div`
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 1.5vw, 18px);
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .card-inner {
     padding: 30px;
@@ -39,7 +37,14 @@ const StyledCard = styled.div`
   }
   .description {
     color: #ccc;
-    padding-bottom: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 20px;
+    height: 60px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin-bottom: 30px;
   }
   .buttons-container {
     display: flex;
@@ -60,9 +65,9 @@ export const Card = ({ image, title, description }: CardProps) => {
         <div className="description">{description}</div>
         <div className="buttons-container">
           <Button className="button" variant={"primary"}>
-            Buy
+            Book
           </Button>
-          <IconButton icon={"favorite"} variant={"primary"} />
+          <IconButton icon={"favorite"} variant={"secondary"} />
         </div>
       </div>
     </StyledCard>

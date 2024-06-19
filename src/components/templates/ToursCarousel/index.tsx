@@ -4,6 +4,7 @@ import { register } from "swiper/element/bundle";
 import { Card } from "../../organisms/Card";
 import IconButton from "../../atoms/IconButton";
 import { Wrapper } from "../../../globalStyles";
+import { getRandomImage } from "../../../utils/utils";
 
 register();
 
@@ -65,9 +66,13 @@ export const ToursCarousel = ({ slides }: ToursCarouselProps) => {
         </div>
 
         <swiper-container slides-per-view="3" ref={swiperRef}>
-          {slides.map(({ image, title, description }) => (
-            <swiper-slide>
-              <Card image={image} title={title} description={description} />
+          {slides.map(({ title, description }, index) => (
+            <swiper-slide key={index}>
+              <Card
+                image={getRandomImage()}
+                title={title}
+                description={description}
+              />
             </swiper-slide>
           ))}
         </swiper-container>
