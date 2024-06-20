@@ -55,6 +55,8 @@ const StyledCard = styled.div`
 `;
 
 export const Card = ({ image, title, description }: CardProps) => {
+  const handleFavorite = () => {};
+
   return (
     <StyledCard>
       <div className="image-container">
@@ -67,7 +69,11 @@ export const Card = ({ image, title, description }: CardProps) => {
           <Button className="button" variant={"primary"}>
             Book
           </Button>
-          <IconButton icon={"favorite"} variant={"secondary"} />
+          <IconButton
+            icon={"favorite"}
+            variant={"secondary"}
+            onClick={handleFavorite}
+          />
         </div>
       </div>
     </StyledCard>

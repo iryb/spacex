@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 interface BannerProps {
   height?: "large" | "small";
   title?: string;
+  subtitle?: string;
   image: string;
 }
 
@@ -14,11 +15,6 @@ const StyledBanner = styled.section<{ height: "large" | "small" }>`
   justify-content: center;
   height: 100vh;
   text-align: center;
-  ${({ height }) =>
-    height === "small" &&
-    css`
-      height: clamp(150px, 45vw, 400px);
-    `}
   h1 {
     font-size: clamp(60px, 10vw, 140px);
     margin: 0;
@@ -37,6 +33,14 @@ const StyledBanner = styled.section<{ height: "large" | "small" }>`
     object-position: bottom;
     z-index: -1;
   }
+  ${({ height }) =>
+    height === "small" &&
+    css`
+      height: clamp(250px, 50vw, 500px);
+      h1 {
+        font-size: clamp(30px, 8vw, 60px);
+      }
+    `}
 `;
 
 const StyledTitle = styled.p`
@@ -47,13 +51,18 @@ const StyledTitle = styled.p`
   margin: 0;
 `;
 
-export const Banner = ({ height = "large", title, image }: BannerProps) => {
+export const Banner = ({
+  height = "large",
+  title,
+  subtitle,
+  image,
+}: BannerProps) => {
   return (
     <StyledBanner height={height}>
       <img src={image} alt="SpaceX" />
       <div>
-        <h1>SpaceX</h1>
-        <StyledTitle>{title}</StyledTitle>
+        {title && <h1>{title}</h1>}
+        {subtitle && <StyledTitle>{subtitle}</StyledTitle>}
       </div>
     </StyledBanner>
   );

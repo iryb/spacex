@@ -4,6 +4,7 @@ import { ApolloProvider } from "@apollo/client";
 import { Layout } from "./components/Layout";
 import { Home } from "./components/pages/Home";
 import { client } from "./lib/data";
+import { Favorites } from "./components/pages/Favorites";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+              <Route path="favorites" element={<Favorites />} />
           </Route>
         </Routes>
       </ApolloProvider>

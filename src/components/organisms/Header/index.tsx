@@ -53,7 +53,7 @@ export const Header = () => {
       <HeaderWrapper>
         <Logo>SpaceX</Logo>
         <Menu type="horizontal" links={menuLinks} />
-        <IconButton variant="primary" icon="favorite" href="/favorite" />
+        <IconButton variant="primary" icon="favorite" href="/favorites" />
       </HeaderWrapper>
     </HeaderStyled>
   );

@@ -2,6 +2,7 @@ import { FC } from "react";
 import styled from "styled-components";
 import { ButtonProps, StyledButton } from "../Button";
 import { Heart, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface IconButtonProps extends ButtonProps {
   icon: "favorite" | "arrow-left" | "arrow-right" | "remove";
@@ -11,9 +12,11 @@ const StyledIconButton = styled(StyledButton)`
   padding: 1rem;
   border: none;
   background-color: transparent;
-  color: var(--primary-color);
-  &:hover {
-    color: #fff;
+  a {
+    color: var(--primary-color);
+    &:hover {
+      color: #fff;
+    }
   }
 `;
 
@@ -22,6 +25,7 @@ const IconButton: FC<IconButtonProps> = ({
   children,
   variant,
   icon,
+  href = "",
   ...props
 }) => {
   return (
@@ -31,11 +35,23 @@ const IconButton: FC<IconButtonProps> = ({
       aria-label={icon}
       {...props}
     >
-      {icon === "favorite" && <Heart />}
-      {icon === "arrow-left" && <ChevronLeft />}
-      {icon === "arrow-right" && <ChevronRight />}
-      {icon === "remove" && <X />}
-      {children}
+      {href ? (
+        <Link to={href}>
+          {icon === "favorite" && <Heart />}
+          {icon === "arrow-left" && <ChevronLeft />}
+          {icon === "arrow-right" && <ChevronRight />}
+          {icon === "remove" && <X />}
+          {children}
+        </Link>
+      ) : (
+        <>
+          {icon === "favorite" && <Heart />}
+          {icon === "arrow-left" && <ChevronLeft />}
+          {icon === "arrow-right" && <ChevronRight />}
+          {icon === "remove" && <X />}
+          {children}
+        </>
+      )}
     </StyledIconButton>
   );
 };

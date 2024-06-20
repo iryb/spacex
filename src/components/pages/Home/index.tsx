@@ -26,7 +26,11 @@ export const Home = () => {
 
   return (
     <>
-      <Banner title="Plan your space trip" image="/assets/banner.jpg" />
+      <Banner
+        title="spacex"
+        subtitle="Plan your space trip"
+        image="/assets/banner.jpg"
+      />
       <ToursCarousel slides={data.launches} />
     </>
   );
