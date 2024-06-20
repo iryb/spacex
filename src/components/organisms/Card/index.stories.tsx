@@ -12,6 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    id: "1",
     image: "http://localhost:8080/assets/banner.jpg",
     title: "Extraordinary tour",
     description:

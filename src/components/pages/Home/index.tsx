@@ -5,6 +5,7 @@ import { useQuery, gql } from "@apollo/client";
 const GET_LAUNCHES = gql`
   query GetLaunches {
     launches(limit: 10) {
+      id
       title: mission_name
       description: details
       upcoming

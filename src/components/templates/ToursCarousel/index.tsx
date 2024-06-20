@@ -10,6 +10,7 @@ register();
 
 type ToursCarouselProps = {
   slides: {
+    id: string;
     image: string;
     title: string;
     description: string;
@@ -66,12 +67,13 @@ export const ToursCarousel = ({ slides }: ToursCarouselProps) => {
         </div>
 
         <swiper-container slides-per-view="3" ref={swiperRef}>
-          {slides.map(({ title, description }, index) => (
+          {slides.map(({ id, title, description }, index) => (
             <swiper-slide key={index}>
               <Card
                 image={getRandomImage()}
                 title={title}
                 description={description}
+                id={id}
               />
             </swiper-slide>
           ))}

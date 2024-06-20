@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import IconButton from "../../atoms/IconButton";
+import { useRecoilState } from "recoil";
+import favoritesState from "../../../recoil/atoms/favoritesState";
 
 type CardProps = {
+  id: string;
   image: string;
   title: string;
   description: string;
@@ -54,8 +57,13 @@ const StyledCard = styled.div`
   }
 `;
 
-export const Card = ({ image, title, description }: CardProps) => {
-  const handleFavorite = () => {};
+export const Card = ({ id, image, title, description }: CardProps) => {
+  const [favorites, setFavorites] = useRecoilState(favoritesState);
+
+  const handleFavorite = () => {
+    //@ts-ignore
+    setFavorites([id, ...favorites]);
+  };
 
   return (
     <StyledCard>
