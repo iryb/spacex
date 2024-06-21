@@ -3,12 +3,14 @@ import Button from "../../atoms/Button";
 import IconButton from "../../atoms/IconButton";
 import { useRecoilState } from "recoil";
 import favoritesState from "../../../recoil/atoms/favoritesState";
+import { gql, useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 
 type CardProps = {
   id: string;
   image: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 };
 
 const StyledCard = styled.div`
@@ -57,8 +59,40 @@ const StyledCard = styled.div`
   }
 `;
 
+const GET_LAUNCH_BY_ID = gql`
+  query GetLaunchById($launchId: ID!) {
+    launch(id: $launchId) {
+      id
+      title: mission_name
+      description: details
+    }
+  }
+`;
+
 export const Card = ({ id, image, title, description }: CardProps) => {
   const [favorites, setFavorites] = useRecoilState(favoritesState);
+  const [cardData, setCardData] = useState({ title, description });
+
+  const { data, loading, error } = useQuery(GET_LAUNCH_BY_ID, {
+    variables: { launchId: id },
+    skip: !!title && !!description, // Skip query if data is passed as props
+  });
+
+  useEffect(() => {
+    if (!title || !description) {
+      if (data) {
+        setCardData({
+          title: data.launch.title,
+          description: data.launch.description,
+        });
+      }
+    }
+  }, [data, title, description]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const { title: cardTitle, description: cardDescription } = cardData;
 
   const handleFavorite = () => {
     //@ts-ignore
@@ -71,8 +105,8 @@ export const Card = ({ id, image, title, description }: CardProps) => {
         <img src={image} alt="tour" />
       </div>
       <div className="card-inner">
-        <h4>{title}</h4>
-        <div className="description">{description}</div>
+        <h4>{cardTitle}</h4>
+        <div className="description">{cardDescription}</div>
         <div className="buttons-container">
           <Button className="button" variant={"primary"}>
             Book
