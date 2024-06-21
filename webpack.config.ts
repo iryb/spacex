@@ -1,10 +1,10 @@
 import path from "path";
 import { Configuration } from "webpack";
 import CopyWebpackPlugin from "copy-webpack-plugin";
+import "webpack-dev-server";
 
 const config: Configuration = {
-  mode:
-    "development",
+  mode: "development",
   entry: "./src/index.tsx",
   module: {
     rules: [
@@ -25,6 +25,15 @@ const config: Configuration = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
+  },
+  devServer: {
+    historyApiFallback: true,
+    static: {
+      directory: path.resolve(__dirname, "dist"),
+    },
+    compress: true,
+    port: 8080,
   },
   plugins: [
     new CopyWebpackPlugin({
