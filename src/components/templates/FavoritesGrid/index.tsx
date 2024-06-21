@@ -7,6 +7,12 @@ import { getRandomImage } from "../../../utils/utils";
 
 const FavoritesGridStyled = styled.section`
   padding: clamp(30px, 5vw, 80px) 0;
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
 `;
 
 export const FavoritesGrid = () => {
@@ -15,9 +21,11 @@ export const FavoritesGrid = () => {
   return (
     <FavoritesGridStyled>
       <Wrapper>
-        {favoritesIds.map((id, index) => (
-          <Card image={getRandomImage()} id={id} key={index} />
-        ))}
+        <div className="row">
+          {favoritesIds.map((id, index) => (
+            <Card image={getRandomImage()} id={id} key={index} />
+          ))}
+        </div>
       </Wrapper>
     </FavoritesGridStyled>
   );
