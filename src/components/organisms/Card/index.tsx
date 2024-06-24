@@ -53,9 +53,13 @@ const StyledCard = styled.div`
   }
   .buttons-container {
     display: flex;
+    gap: 15px;
   }
   .button {
     flex: 1;
+  }
+  .icon {
+    padding: 0;
   }
 `;
 
@@ -94,9 +98,14 @@ export const Card = ({ id, image, title, description }: CardProps) => {
 
   const { title: cardTitle, description: cardDescription } = cardData;
 
-  const handleFavorite = () => {
+  const handleAddFavorite = () => {
     //@ts-ignore
     setFavorites([id, ...favorites]);
+  };
+
+  const handleRemoveFavorite = () => {
+    //@ts-ignore
+    setFavorites(favorites.filter((item) => item !== id));
   };
 
   return (
@@ -111,11 +120,21 @@ export const Card = ({ id, image, title, description }: CardProps) => {
           <Button className="button" variant={"primary"}>
             Book
           </Button>
-          <IconButton
-            icon={"favorite"}
-            variant={"secondary"}
-            onClick={handleFavorite}
-          />
+          {favorites.includes(id) ? (
+            <IconButton
+              icon={"remove"}
+              variant={"secondary"}
+              onClick={handleRemoveFavorite}
+              className="icon"
+            />
+          ) : (
+            <IconButton
+              icon={"favorite"}
+              variant={"secondary"}
+              onClick={handleAddFavorite}
+              className="icon"
+            />
+          )}
         </div>
       </div>
     </StyledCard>
