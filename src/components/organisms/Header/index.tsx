@@ -13,8 +13,7 @@ const HeaderStyled = styled.header`
 `;
 
 const HeaderWrapper = styled.div`
-  width: 1200px;
-  max-width: 100%;
+  max-width: 1200px;
   margin: auto;
   padding: 0 clamp(15px, 3vw, 40px);
   display: flex;
