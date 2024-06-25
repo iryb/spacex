@@ -8,6 +8,7 @@ interface MenuProps {
     href: string;
     title: string;
   }[];
+  className?: string;
 }
 
 const StyledContainer = styled.div<{ type: "horizontal" | "vertical" }>`
@@ -22,9 +23,13 @@ const StyledContainer = styled.div<{ type: "horizontal" | "vertical" }>`
     `}
 `;
 
-export const Menu: FC<MenuProps> = ({ type = "horizontal", links }) => {
+export const Menu: FC<MenuProps> = ({
+  type = "horizontal",
+  links,
+  className,
+}) => {
   return (
-    <StyledContainer type={type}>
+    <StyledContainer type={type} className={className}>
       {links.map(({ href, title }, index) => (
         <Link key={index} href={href}>
           {title}

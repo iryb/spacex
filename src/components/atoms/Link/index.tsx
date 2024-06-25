@@ -48,11 +48,7 @@ export const Link: FC<LinkProps> = ({
   ...props
 }) => {
   return (
-    <BasicLink
-      {...props}
-      to={href}
-      className={({ isActive }) => (isActive ? "active" : "")}
-    >
+    <BasicLink {...props} to={href}>
       {children}
     </BasicLink>
   );
