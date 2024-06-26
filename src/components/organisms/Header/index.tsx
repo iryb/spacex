@@ -13,6 +13,14 @@ const HeaderStyled = styled.header<{ $headerScrolled: boolean }>`
   z-index: 10;
   border-bottom: 1px solid transparent;
   transition: all 300ms;
+  .favorites {
+    position: absolute;
+    right: 70px;
+    top: 10px;
+    @media (min-width: 641px) {
+      position: static;
+    }
+  }
   ${({ $headerScrolled }) =>
     $headerScrolled === true &&
     css`
@@ -58,6 +66,7 @@ const MobileMenu = styled(Menu)<{ $isOpened: boolean }>`
     css`
       display: flex;
       top: 100%;
+      background-color: var(--secondary-color);
     `}
 `;
 
@@ -117,13 +126,32 @@ export const Header = () => {
               links={menuLinks}
               $isOpened={isMobileMenuOpened}
             />
-            <IconButton variant="primary" icon="remove" href="/favorites" />
+            {isMobileMenuOpened ? (
+              <IconButton
+                variant="primary"
+                icon="remove"
+                onClick={() => setMobileMenuOpened(!isMobileMenuOpened)}
+                className="menu-toggle"
+              />
+            ) : (
+              <IconButton
+                variant="primary"
+                icon="menu"
+                onClick={() => setMobileMenuOpened(!isMobileMenuOpened)}
+                className="menu-toggle"
+              />
+            )}
           </>
         ) : (
           <Menu type="horizontal" links={menuLinks} />
         )}
 
-        <IconButton variant="primary" icon="favorite" href="/favorites" />
+        <IconButton
+          variant="primary"
+          icon="favorite"
+          href="/favorites"
+          className="favorites"
+        />
       </HeaderWrapper>
     </HeaderStyled>
   );
