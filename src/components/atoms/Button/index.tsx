@@ -7,7 +7,6 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   href?: string;
   variant: ButtonVatiant;
-  className?: string;
 }
 
 export const bg = {
@@ -56,13 +55,7 @@ export const StyledButton = styled(BasicButton)<ButtonProps>`
   ${({ variant }) => bg[variant]}
 `;
 
-const Button: FC<ButtonProps> = ({
-  type,
-  children,
-  variant,
-  className,
-  ...props
-}) => {
+const Button: FC<ButtonProps> = ({ type, children, variant, ...props }) => {
   return (
     <StyledButton variant={variant} type={type} {...props}>
       {children}

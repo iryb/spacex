@@ -16,12 +16,15 @@ type CardProps = {
 const StyledCard = styled.div`
   border: 2px solid var(--primary-color);
   text-align: center;
-  max-width: 350px;
   border-radius: 15px;
   overflow: hidden;
   .image-container {
-    height: clamp(150px, 20vw, 300px);
+    position: relative;
+    aspect-ratio: 16 / 9;
     img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
