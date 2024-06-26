@@ -1,18 +1,13 @@
-import React, { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
+import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
-
-export type Link = {
-  href: string;
-  title: string;
-  isActive?: boolean;
-};
 
 export interface LinkProps extends ButtonHTMLAttributes<HTMLAnchorElement> {
   href: string;
   isActive?: boolean;
 }
 
-const BasicLink = styled.a<LinkProps>`
+const BasicLink = styled(NavLink)`
   display: inline-block;
   position: relative;
   text-decoration: none;
@@ -39,13 +34,11 @@ const BasicLink = styled.a<LinkProps>`
       right: 0;
     }
   }
-  ${({ isActive }) =>
-    isActive &&
-    css`
-      &:before {
-        right: 0;
-      }
-    `}
+  &.active {
+    &:before {
+      right: 0;
+    }
+  }
 `;
 
 export const Link: FC<LinkProps> = ({
@@ -55,7 +48,7 @@ export const Link: FC<LinkProps> = ({
   ...props
 }) => {
   return (
-    <BasicLink {...props} href={href} isActive={isActive}>
+    <BasicLink {...props} to={href}>
       {children}
     </BasicLink>
   );

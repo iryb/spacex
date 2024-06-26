@@ -1,10 +1,14 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styled, { css } from "styled-components";
-import { type Link as LinkType, Link } from "../../atoms/Link";
+import { Link } from "../../atoms/Link";
 
 interface MenuProps {
-  type: "horizontal" | "vertical";
-  links: LinkType[];
+  type?: "horizontal" | "vertical";
+  links: {
+    href: string;
+    title: string;
+  }[];
+  className?: string;
 }
 
 const StyledContainer = styled.div<{ type: "horizontal" | "vertical" }>`
@@ -19,11 +23,15 @@ const StyledContainer = styled.div<{ type: "horizontal" | "vertical" }>`
     `}
 `;
 
-export const Menu: FC<MenuProps> = ({ type = "horizontal", links }) => {
+export const Menu: FC<MenuProps> = ({
+  type = "horizontal",
+  links,
+  className,
+}) => {
   return (
-    <StyledContainer type={type}>
-      {links.map(({ href, title, isActive }, index) => (
-        <Link key={index} href={href} isActive={isActive}>
+    <StyledContainer type={type} className={className}>
+      {links.map(({ href, title }, index) => (
+        <Link key={index} href={href}>
           {title}
         </Link>
       ))}
