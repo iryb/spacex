@@ -15,6 +15,7 @@ const SpinnerWrapper = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
+  background-color: var(--background-color);
 `;
 
 const SpinnerStyled = styled.div`

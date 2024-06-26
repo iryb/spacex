@@ -5,7 +5,11 @@ import { FavoritesGrid } from "../../templates/FavoritesGrid";
 export const Favorites = () => {
   return (
     <>
-      <Banner title="Favorites" image="/assets/banner.jpg" height="small" />
+      <Banner
+        title="Favorites"
+        image="/assets/favorites-banner.jpg"
+        height="small"
+      />
       <FavoritesGrid />
     </>
   );

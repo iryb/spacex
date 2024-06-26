@@ -15,6 +15,16 @@ const StyledBanner = styled.section<{ height: "large" | "small" }>`
   justify-content: center;
   height: 100vh;
   text-align: center;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+  }
   h1 {
     font-size: clamp(60px, 10vw, 140px);
     margin: 0;
@@ -33,12 +43,18 @@ const StyledBanner = styled.section<{ height: "large" | "small" }>`
     object-position: bottom;
     z-index: -1;
   }
+  .text {
+    position: relative;
+  }
   ${({ height }) =>
     height === "small" &&
     css`
       height: clamp(250px, 50vw, 500px);
       h1 {
         font-size: clamp(30px, 8vw, 60px);
+      }
+      &:before {
+        display: none;
       }
     `}
 `;
@@ -60,7 +76,7 @@ export const Banner = ({
   return (
     <StyledBanner height={height}>
       <img src={image} alt="SpaceX" />
-      <div>
+      <div className="text">
         {title && <h1>{title}</h1>}
         {subtitle && <StyledTitle>{subtitle}</StyledTitle>}
       </div>

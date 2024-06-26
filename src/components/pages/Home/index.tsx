@@ -31,7 +31,7 @@ export const Home = () => {
       <Banner
         title="spacex"
         subtitle="Plan your space trip"
-        image="/assets/banner.jpg"
+        image="/assets/banner-2.jpg"
       />
       <ToursCarousel slides={data.launches} />
     </>

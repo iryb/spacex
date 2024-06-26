@@ -10,13 +10,14 @@ const GlobalStyle = createGlobalStyle`
     --secondary-hover-color: #b2b2b2;
     --primary-font: 'Lato', sans-serif;
     --secondary-font: 'Syne', sans-serif;
-    --background-color: #020a46;
+    --background-color: #02072f;
   }
   body {
     margin: 0;
     padding: 0;
     font-family: var(--primary-font);
     background-color: var(--background-color);
+    background-image: url(/assets/noise.png);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--secondary-font);

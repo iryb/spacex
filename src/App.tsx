@@ -6,6 +6,8 @@ import { Layout } from "./components/Layout";
 import { Home } from "./components/pages/Home";
 import { client } from "./lib/data";
 import { Favorites } from "./components/pages/Favorites";
+import { Tours } from "./components/pages/Tours";
+import { About } from "./components/pages/About";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="favorites" element={<Favorites />} />
+              <Route path="tours" element={<Tours />} />
+              <Route path="about" element={<About />} />
             </Route>
           </Routes>
         </ApolloProvider>
