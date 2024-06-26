@@ -1,6 +1,7 @@
 import { Banner } from "../../organisms/Banner";
 import { ToursCarousel } from "../../templates/ToursCarousel";
 import { useQuery, gql } from "@apollo/client";
+import { Spinner } from "../../atoms/Spinner";
 
 const GET_LAUNCHES = gql`
   query GetLaunches {
@@ -23,7 +24,7 @@ const GET_LAUNCHES = gql`
 export const Home = () => {
   const { loading, error, data } = useQuery(GET_LAUNCHES);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
 
   return (
     <>

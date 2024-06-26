@@ -6,13 +6,17 @@ import { Card } from "../../organisms/Card";
 import { getRandomImage } from "../../../utils/utils";
 
 const FavoritesGridStyled = styled.section`
-  padding: clamp(30px, 5vw, 80px) 0;
+  padding: clamp(50px, 5vw, 80px) 0;
   color: #fff;
   .row {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 20px;
-    justify-content: center;
+    @media (min-width: 641px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .no-tours {
+    text-align: center;
   }
 `;
 
@@ -22,15 +26,15 @@ export const FavoritesGrid = () => {
   return (
     <FavoritesGridStyled>
       <Wrapper>
-        <div className="row">
-          {favoritesIds.length > 0 ? (
-            favoritesIds.map((id, index) => (
+        {favoritesIds.length > 0 ? (
+          <div className="row">
+            {favoritesIds.map((id, index) => (
               <Card image={getRandomImage()} id={id} key={index} />
-            ))
-          ) : (
-            <p>There are no favorite tours.</p>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <p className="no-tours">There are no favorite tours.</p>
+        )}
       </Wrapper>
     </FavoritesGridStyled>
   );
