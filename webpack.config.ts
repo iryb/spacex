@@ -4,7 +4,6 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 import "webpack-dev-server";
 
 const config: Configuration = {
-  mode: "development",
   entry: "./src/index.tsx",
   module: {
     rules: [
@@ -25,7 +24,7 @@ const config: Configuration = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
+    publicPath: "https://spacex-orcin.vercel.app/assets/",
   },
   devServer: {
     historyApiFallback: true,
