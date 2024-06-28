@@ -24,7 +24,7 @@ const config: Configuration = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "https://spacex-orcin.vercel.app/assets/",
+    publicPath: "/",
   },
   devServer: {
     historyApiFallback: true,
