@@ -4,7 +4,6 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 import "webpack-dev-server";
 
 const config: Configuration = {
-  mode: "development",
   entry: "./src/index.tsx",
   module: {
     rules: [
